@@ -1,0 +1,25 @@
+<table id='table1' class="table table-hover table-bordered treetable">
+    <thead>
+        <tr>
+            <th><div align="center">日期</div></th>
+            <th><div align="center">点击人数</div></th>
+            <th><div align="center">次日留存</div></th>
+            <th><div align="center">次日留存率</div></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% for(var day in data) { %>
+    		<tr>
+    			<td><div align="center"><%= data[day]['statDate'] %></div></td>
+    			<td><div align="center"><%= data[day]['click'] %></div></td>
+    			<td><div align="center"><%= data[day]['retent'] %></div></td>
+    			<td>
+    			<div align="center"><%= data[day]['ratio'] %>
+    			<% if(data[day]['retent']) { %>
+    				%
+    			<% } %>
+    			</div></td>
+        	</tr>
+		<% } %>
+    </tbody>
+</table>

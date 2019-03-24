@@ -1,0 +1,81 @@
+<table id='table1' class="table table-hover table-bordered treetable">
+    <thead>
+		<tr>
+			<th rowspan='3'>日期</th>
+			<th rowspan='3'>星期</th>
+			<th colspan="<%= gameSize * 15 + 1 %>">QQ管家渠道</th>
+		</tr>
+		<tr>
+			<th rowspan='2'>总进入人数</th>
+			<% for(var game in data['games']) { %>
+				<th colspan="15"><%= data['games'][game] %></th>
+			<% } %>
+		</tr>
+		<tr>
+			<% for(var i = 0; i < gameSize; i++) { %>
+				<th><a href="#" data-toggle="tooltip" title="当天注册玩家创建游戏角色的个数">创建角色数</a></th>
+				<th><a href="#" data-toggle="tooltip" title="当天注册的有效玩家（心跳>1）创建游戏角色的个数">有效创角数</a></th>
+				<th>有效创角率</th>
+				<th>总登人数</th>
+				<th>有效总登</th>
+				<th>总登流失率</th>
+				<th>新用户充值人数</th>
+				<th>新用户充值金额</th>
+				<th>新注册付费率</th>
+				<th>充值总人数</th>
+				<th>充值总金额</th>
+				<th>总注册付费率</th>
+				<th>ARPU</th>
+				<th>次留人数</th>
+				<th>次日留存率</th>	
+			<% } %>
+		</tr>
+	</thead>
+	<tbody>
+		<% for(var day in data['days']) { %>
+			<tr>
+				<td><%= day %></td>
+				<td><%= data['days'][day] %></td>
+				<td><%= data['totalEnter'][day] %></td>
+				<% for(var game in data['games']) { %>
+					<td><%= data[day][game]['role_create_count'] %></td>
+					<td><%= data[day][game]['valid_role_create_count'] %></td>
+					<td>
+						<%= data[day][game]['new_login_valid_rate'] %>
+						<% if(data[day][game]['new_login_valid_rate']) { %>
+							%
+						<% } %>
+					</td>
+					<td><%= data[day][game]['all_login'] %></td>
+					<td><%= data[day][game]['all_login_valid'] %></td>
+					<td><%= data[day][game]['total_login_turn_over_rate'] %>
+						<% if(data[day][game]['total_login_turn_over_rate']) { %>
+							%
+						<% } %>
+					</td>
+					<td><%= data[day][game]['new_login_pay_num'] %></td>
+					<td><%= data[day][game]['new_login_pay_amount'] %></td>
+					<td><%= data[day][game]['new_login_pay_rate'] %>
+						<% if(data[day][game]['new_login_pay_rate']) { %>
+							%
+						<% } %>
+					</td>
+					<td><%= data[day][game]['all_login_pay_num'] %></td>
+					<td><%= data[day][game]['all_login_pay_amount'] %></td>
+					<td><%= data[day][game]['all_login_pay_rate'] %>
+						<% if(data[day][game]['all_login_pay_rate']) { %>
+							%
+						<% } %>
+					</td>
+					<td><%= data[day][game]['arpu'] %></td>
+					<td><%= data[day][game]['new_login_keep'] %></td>
+					<td><%= data[day][game]['new_login_retent_rate'] %>
+					<% if(data[day][game]['new_login_retent_rate']) { %>
+							%
+						<% } %>
+					</td>
+				<% } %>
+			</tr>
+		<% } %>
+	</tbody>
+</table>

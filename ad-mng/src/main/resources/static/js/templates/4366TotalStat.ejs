@@ -1,0 +1,84 @@
+<table id='table1' class="table table-hover table-bordered treetable">
+    <thead>
+		<tr>
+			<th rowspan='3'>日期</th>
+			<th rowspan='3'>星期</th>
+			<th colspan="4">进入情况</th>
+			<th colspan="8">转化情况</th>
+			<th colspan="2">留存情况</th>
+			<th colspan="<%= gameSize %>">分游戏创角情况</th>
+			<th colspan="8">游戏付费留存情况</th>
+		</tr>
+		<tr>
+			<th rowspan='2'><a href="#" data-toggle="tooltip" title="login/tencent/x2tab + login/tencent2/x2tab总人数，来自海猫zhgame.dwd_product_event_base，作业id：6000010507">总进入人数</a></th>
+			<th colspan='2'>正常进入</th>
+			<th rowspan='2'>推广tips进入</th>
+			<th rowspan='2'><a href="#" data-toggle="tooltip" title="click/tencent + click/tencent2总人数，海猫作业id：6000009956">总点击人数</a></th>
+			<th rowspan='2'>总进入点击率</th>
+			<th rowspan='2'><a href="#" data-toggle="tooltip" title="当天在qq管家注册的总用户数，升龙表passport_4366">总创号数</a></th>
+			<th rowspan='2'>点击创号率</th>
+			<th rowspan='2'><a href="#" data-toggle="tooltip" title="当天注册玩家创建游戏角色的个数">总创建角色数</a></th>
+			<th rowspan='2'><a href="#" data-toggle="tooltip" title="有效：在线满5分钟以上；总登：登录独代游戏的玩家人数（同一个玩家在多个游戏登录算多个）">有效总登</a></th>
+			<th rowspan='2'>创号创角转化率</th>
+			<th rowspan='2'>点击创角转化率</th>
+			<th rowspan='2'>点击用户次留人数</th>
+			<th rowspan='2'>点击用户次留率</th>
+			
+			<% for(var game in data['games']) { %>
+				<th rowspan="2"><%= data['games'][game] %></th>
+			<% } %>
+			
+			<th rowspan='2'>新用户充值人数</th>
+			<th rowspan='2'>新用户付费率</th>
+			<th rowspan='2'>新用户充值金额</th>
+			<th rowspan='2'>新用户ARPU</th>
+			<th rowspan='2'>总充值人数</th>
+			<th rowspan='2'>总充值金额</th>
+			<th rowspan='2'>总充值人数次留</th>
+			<th rowspan='2'>游戏总次留</th>
+		</tr>
+		<tr>
+			<th>纯粹页游模块进入</th>
+			<th>cf模块进入</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for(var day in data['days']) { %>
+			<tr>
+				<td><%= day %></td>
+				<td><%= data['days'][day] %></td>
+				<td><%= data['totalStat'][day]['totalUv'] %></td>
+				<td><%= data['totalStat'][day]['pureUv'] %></td>
+				<td><%= data['totalStat'][day]['cfUv'] %></td>
+				<td><%= data['totalStat'][day]['promoTipsUv'] %></td>
+				<td><%= data['totalStat'][day]['totalClick'] %></td>
+				<td><%= data['totalStat'][day]['totalClickRate'] %>%</td>
+				<td><%= data['totalStat'][day]['totalRegister'] %></td>
+				<td><%= data['totalStat'][day]['clickRegisterRate'] %>%</td>
+				<td><%= data['totalStat'][day]['totalRoleCreate'] %></td>
+				<td><%= data['totalStat'][day]['totalValidAllLogin'] %></td>
+				<td><%= data['totalStat'][day]['newLoginRate'] %>%</td>
+				<td><%= data['totalStat'][day]['clickLoginRate'] %>%</td>
+				<td><%= data['totalStat'][day]['clickRetent'] %></td>
+				<td><%= data['totalStat'][day]['clickRetentRate'] %>%</td>
+				<% for(var game in data['games']) { %>
+					<td>
+						<% if(data['gameStat'][day][game]) { %>
+							<%= data['gameStat'][day][game] %>
+						<% } else { %> 
+							<%= 0 %>
+						<% } %>
+					</td>
+				<% } %>
+				<td><%= data['totalStat'][day]['newLoginPayCount'] %></td>
+				<td><%= data['totalStat'][day]['newLoginPayRate'] %>%</td>
+				<td><%= data['totalStat'][day]['newLoginPayAmount'] %></td>
+				<td><%= data['totalStat'][day]['newLoginArpu'] %></td>
+				<td><%= data['totalStat'][day]['allLoginPayCount'] %></td>
+				<td><%= data['totalStat'][day]['allLoginPayAmount'] %></td>
+				<td><%= data['totalStat'][day]['payRetentCount'] %></td>
+				<td><%= data['totalStat'][day]['newLoginRetentRate'] %>%</td>
+			</tr>
+		<% } %>
+	</tbody>
+</table>

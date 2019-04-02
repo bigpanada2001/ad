@@ -1,7 +1,7 @@
 package com.freeco.util;
 
 import com.freeco.costants.TimeConstant;
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,9 +18,9 @@ public class DateUtil {
      * @return 格式为：年月日的时间
      */
     public static String unixToDateString(long millisecond, String pattern) {
-        if (StringUtils.isEmpty(pattern)) {
-            return "";
-        }
+//        if (StringUtils.isEmpty(pattern)) {
+//            return "";
+//        }
 
         Date date = new Date(millisecond);
         SimpleDateFormat format = new SimpleDateFormat(pattern);

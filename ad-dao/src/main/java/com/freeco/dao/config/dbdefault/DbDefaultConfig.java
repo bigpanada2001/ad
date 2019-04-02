@@ -1,4 +1,4 @@
-package com.freeco.dao.config;
+package com.freeco.dao.config.dbdefault;
 
 import javax.sql.DataSource;
 

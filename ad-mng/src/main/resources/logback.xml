@@ -32,11 +32,11 @@
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
     </appender>
-    <logger name="com.duowan" level="info">
+    <logger name="com.freeco" level="info">
         <appender-ref ref="taskReRun" />
         <appender-ref ref="STDOUT" />
     </logger>
-	<root name="org.springframework" level="INFO">
+	<root name="org.springframework" level="info">
 		<appender-ref ref="taskReRun" />
 		<appender-ref ref="STDOUT" />
 	</root>

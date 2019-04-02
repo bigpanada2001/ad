@@ -1,4 +1,4 @@
-package com.freeco.dao.config;
+package com.freeco.dao.config.dbdefault;
 
 import javax.sql.DataSource;
 
@@ -21,17 +21,9 @@ import com.alibaba.druid.pool.DruidDataSource;
 @Configuration
 public class JdbcTemplateConfig {
 
-
 	@Bean(name="defaultJdbcTemplate")
 	public JdbcTemplate defaultJdbcTemplate (
 	    @Qualifier("defaultDataSource")DataSource dataSource ) {
-	
-	    return new JdbcTemplate(dataSource);
-	}
-
-	@Bean(name="shardingJdbcTemplate")
-	public JdbcTemplate shardingJdbcTemplate (
-	    @Qualifier("dataSource")DataSource dataSource ) {
 	
 	    return new JdbcTemplate(dataSource);
 	}

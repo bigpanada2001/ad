@@ -6,6 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
 //@EnableAutoConfiguration
@@ -13,6 +14,7 @@ import org.springframework.boot.SpringApplication;
 //@ComponentScan(value = {"com.duowan.taskReRun.action,com.duowan.taskReRun.service,com.duowan.taskReRun.dao"})
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 //@EnableAutoConfiguration(exclude={SecurityAutoConfiguration.class})
+@EnableWebSecurity
 public class App {
     public static void main(String[] args) {
 //        ConfigurableApplicationContext run = run(App.class, args);
